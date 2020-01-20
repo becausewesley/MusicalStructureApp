@@ -4,15 +4,14 @@
     android:id="@+id/myList"
     android:layout_width="match_parent"
     android:layout_height="@dimen/list_item_height"
-    android:background="#FFF7DA"
+    android:background="@color/neutral_background"
     android:orientation="horizontal">
-    <!--TODO: Add color to colors file and reference here-->
 
     <ImageView
         android:id="@+id/word_image"
         android:layout_width="@dimen/list_item_height"
         android:layout_height="@dimen/list_item_height"
-        android:background="#FFF7DA" />
+        android:background="@color/neutral_background" />
 
     <LinearLayout
         android:id="@+id/category_background"
