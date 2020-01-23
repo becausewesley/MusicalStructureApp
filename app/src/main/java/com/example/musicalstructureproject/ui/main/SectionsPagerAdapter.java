@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.musicalstructureproject.Fragment1;
+import com.example.musicalstructureproject.Fragment2;
 import com.example.musicalstructureproject.R;
 
 /**
@@ -18,7 +19,7 @@ import com.example.musicalstructureproject.R;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -33,6 +34,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 fragment = new Fragment1();
                 break;
+            case 1:
+                fragment = new Fragment2();
+                break;
         }
         return fragment;
     }
@@ -45,7 +49,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 1 total pages.
-        return 1;
+        // Show 2 total pages.
+        return 2;
     }
 }
