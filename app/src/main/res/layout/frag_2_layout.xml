@@ -40,17 +40,19 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/outline_play_circle_outline_black_48dp"/>
+            <Button
+                android:id="@+id/play_button"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/outline_play_circle_outline_black_48dp"/>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/round_pause_circle_outline_black_48dp"/>
+            <Button
+                android:id="@+id/pause_button"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/round_pause_circle_outline_black_48dp"/>
 
         </RelativeLayout>
 
