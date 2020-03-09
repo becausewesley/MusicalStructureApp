@@ -82,18 +82,18 @@ public class Fragment1 extends Fragment {
 
         final ArrayList<Song> songs = new ArrayList<Song>();
 
-        songs.add(new Song("Song 1", "Artist 1", R.raw.placeholderfile));
-        songs.add(new Song("Song 2", "Artist 2"));
-        songs.add(new Song("Song 3", "Artist 3"));
-        songs.add(new Song("Song 4", "Artist 4"));
-        songs.add(new Song("Song 5", "Artist 5"));
-        songs.add(new Song("Song 6", "Artist 6"));
-        songs.add(new Song("Song 7", "Artist 7"));
-        songs.add(new Song("Song 8", "Artist 8"));
-        songs.add(new Song("Song 9", "Artist 9"));
-        songs.add(new Song("Song 10", "Artist 10"));
-        songs.add(new Song("Song 11", "Artist 11"));
-        songs.add(new Song("Song 12", "Artist 12"));
+        songs.add(new Song("Fairyland", "AlienXXX", R.raw.alienxxx__fairyland));
+        songs.add(new Song("Nephlim", "Flick3r", R.raw.flick3r__nephlim));
+        songs.add(new Song("Melody Loop", "JPMusic82", R.raw.jpmusic82__melody_loop));
+        songs.add(new Song("Back to the 80s", "Milton.", R.raw.milton__back_to_80s));
+        songs.add(new Song("Rhythm Guitar Riff", "AlienXXX", R.raw.alienxxx__rhythm_guitar_riff));
+        songs.add(new Song("Floating Synth Melody", "Lemoncreme", R.raw.lemoncreme__floating_synth_melody));
+        songs.add(new Song("Phat Bass Line", "Flick3r", R.raw.flick3r__phat_bass_line));
+        songs.add(new Song("Equal", "Setuniman", R.raw.setuniman__equal));
+        songs.add(new Song("Melody Mix", "JPMusic82", R.raw.jpmusic82__samples_melody_mix));
+        songs.add(new Song("Symphony Sounds", "Lemoncreme", R.raw.lemoncreme__symphony_sounds));
+        songs.add(new Song("The Fall of Icarus", "Flick3r", R.raw.flick3r__the_fall_of_icarus));
+        songs.add(new Song("Happy Again", "Setuniman", R.raw.setuniman__happy_again));
 
         SongAdapter adapter = new SongAdapter(getActivity(), songs);
         ListView listView = rootView.findViewById(R.id.list);
