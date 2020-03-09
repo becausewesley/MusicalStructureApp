@@ -8,6 +8,8 @@ public class Song {
 
     private int mSongFile;
 
+    private int mSongArt;
+
 
     //This is a basic contsructor for storing song name and artist only (Temporary)
     public Song(String songName, String songArtist){
@@ -26,17 +28,23 @@ public class Song {
         return mSongArtist;
     }
 
-    public Song (String songName, String songArtist, int songFile){
+    public Song (String songName, String songArtist, int songFile, int songArt){
 
         mSongName = songName;
         mSongArtist = songArtist;
         mSongFile = songFile;
+        mSongArt = songArt;
 
     }
 
     public int getSongFile(){
 
         return mSongFile;
+    }
+
+    public int getSongArt(){
+
+        return mSongArt;
     }
 }
 
