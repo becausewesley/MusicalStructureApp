@@ -1,6 +1,8 @@
 package com.example.musicalstructureproject;
 
-public class Song {
+
+public class Song
+ {
 
     private String mSongName;
 
@@ -12,23 +14,23 @@ public class Song {
 
 
     //This is a basic contsructor for storing song name and artist only (Temporary)
-    public Song(String songName, String songArtist){
+    public Song(String songName, String songArtist) {
 
         mSongName = songName;
         mSongArtist = songArtist;
     }
 
-    public String getSongName(){
+    public String getSongName() {
 
         return mSongName;
     }
 
-    public String getSongArtist(){
+    public String getSongArtist() {
 
         return mSongArtist;
     }
 
-    public Song (String songName, String songArtist, int songFile, int songArt){
+    public Song(String songName, String songArtist, int songFile, int songArt) {
 
         mSongName = songName;
         mSongArtist = songArtist;
@@ -37,12 +39,12 @@ public class Song {
 
     }
 
-    public int getSongFile(){
+    public int getSongFile() {
 
         return mSongFile;
     }
 
-    public int getSongArt(){
+    public int getSongArt() {
 
         return mSongArt;
     }

@@ -6,15 +6,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
+
 public class Fragment2 extends Fragment {
 
     Button mPlayButton ;
     Button mPauseButton;
+    TextView mArtistName;
+    TextView mSongName;
+
 
 
     @Nullable
@@ -22,6 +28,8 @@ public class Fragment2 extends Fragment {
 
     public View onCreateView (@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.frag_2_layout, container, false);
+
+
 
         mPlayButton = (Button) rootView.findViewById(R.id.play_button);
         mPlayButton.setVisibility(View.VISIBLE);

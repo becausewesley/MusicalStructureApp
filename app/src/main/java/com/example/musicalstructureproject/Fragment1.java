@@ -20,6 +20,7 @@
 package com.example.musicalstructureproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -94,6 +95,8 @@ public class Fragment1 extends Fragment {
         songs.add(new Song("Symphony Sounds", "Lemoncreme", R.raw.lemoncreme__symphony_sounds, R.drawable.art10));
         songs.add(new Song("The Fall of Icarus", "Flick3r", R.raw.flick3r__the_fall_of_icarus, R.drawable.art11));
         songs.add(new Song("Happy Again", "Setuniman", R.raw.setuniman__happy_again, R.drawable.art12));
+
+
 
         SongAdapter adapter = new SongAdapter(getActivity(), songs);
         ListView listView = rootView.findViewById(R.id.list);
