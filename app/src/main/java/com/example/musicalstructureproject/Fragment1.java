@@ -76,7 +76,7 @@ public class Fragment1 extends Fragment {
     @Override
 
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.song_list, container, false);
+        View rootView = inflater.inflate(R.layout.activity_main, container, false);
 
         mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
 

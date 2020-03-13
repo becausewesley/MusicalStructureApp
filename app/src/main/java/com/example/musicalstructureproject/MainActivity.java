@@ -19,7 +19,12 @@
 
 package com.example.musicalstructureproject;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 
@@ -35,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //This is the array of Song objects which contain all relevant info (See Song.class)
         final ArrayList<Song> songs = new ArrayList<Song>();
 
         songs.add(new Song("Fairyland", "AlienXXX", R.raw.alienxxx__fairyland, R.drawable.art1));
@@ -50,9 +56,31 @@ public class MainActivity extends AppCompatActivity {
         songs.add(new Song("The Fall of Icarus", "Flick3r", R.raw.flick3r__the_fall_of_icarus, R.drawable.art11));
         songs.add(new Song("Happy Again", "Setuniman", R.raw.setuniman__happy_again, R.drawable.art12));
 
+        //This attaches the custom class adapter
         SongAdapter adapter = new SongAdapter(MainActivity.this, songs);
         ListView listView = findViewById(R.id.list);
         listView.setAdapter(adapter);
+
+        //This is the onClickListener for the items in the list view
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Song song = songs.get(position); //This gets which item was selected
+
+                //These strings store the song name and artist from the selection that was made
+                String songName = song.getSongName();
+                String songArtist = song.getSongArtist();
+                int songArt = song.getSongArt();
+
+                //This creates the intent for the new activity and sends the relevant information through
+                Intent intent = new Intent(view.getContext(), MusicPlayer.class);
+                intent.putExtra("songNm", songName);
+                intent.putExtra("songAr", songArtist);
+                intent.putExtra("songArt", songArt);
+                startActivity(intent);
+
+            }
+        });
 
     }
 }
