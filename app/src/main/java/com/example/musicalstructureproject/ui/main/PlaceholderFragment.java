@@ -14,8 +14,8 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.musicalstructureproject.R;
 
-/**
- * A placeholder fragment containing a simple view.
+/*
+ * TODO: Remove this fragment
  */
 public class PlaceholderFragment extends Fragment {
 

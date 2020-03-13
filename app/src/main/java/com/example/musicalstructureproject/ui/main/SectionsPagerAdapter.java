@@ -12,9 +12,8 @@ import com.example.musicalstructureproject.Fragment1;
 import com.example.musicalstructureproject.Fragment2;
 import com.example.musicalstructureproject.R;
 
-/**
- * A [FragmentPagerAdapter] that returns a fragment corresponding to
- * one of the sections/tabs/pages.
+/*
+ * TODO: Remove this class
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 

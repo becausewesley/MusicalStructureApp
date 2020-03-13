@@ -1,5 +1,12 @@
 package com.example.musicalstructureproject.ui.main;
 
+
+/*
+    *
+    * TODO: Remove this class
+    *
+ */
+
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
