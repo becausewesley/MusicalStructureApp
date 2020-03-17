@@ -1,8 +1,12 @@
 package com.example.musicalstructureproject;
 
 
-public class Song
- {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class Song implements Parcelable {
 
     private String mSongName;
 
@@ -48,6 +52,42 @@ public class Song
 
         return mSongArt;
     }
+
+    //This part makes the object parcelable
+    public Song(Parcel in) {
+        String[] data = new String[4];
+
+        in.readStringArray((data));
+        this.mSongName = data[0];
+        this.mSongArtist = data[1];
+        this.mSongFile = Integer.parseInt(data[2]);
+        this.mSongArt = Integer.parseInt(data[3]);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeStringArray(new String[]{
+                this.mSongName, this.mSongArtist, String.valueOf(this.mSongFile),
+                String.valueOf(this.mSongArt)});
+    }
+
+    public static final Parcelable.Creator<Song> CREATOR = new Parcelable.Creator<Song>() {
+
+        @Override
+        public Song createFromParcel(Parcel source) {
+            return new Song(source);
+        }
+
+        @Override
+        public Song[] newArray(int size) {
+            return new Song[size];
+        }
+    };
 }
 
 

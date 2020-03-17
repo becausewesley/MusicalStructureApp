@@ -21,6 +21,7 @@ package com.example.musicalstructureproject;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,6 +32,7 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -67,16 +69,9 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Song song = songs.get(position); //This gets which item was selected
 
-                //These strings store the song name and artist from the selection that was made
-                String songName = song.getSongName();
-                String songArtist = song.getSongArtist();
-                int songArt = song.getSongArt();
-
-                //This creates the intent for the new activity and sends the relevant information through
+                //This creates the intent for the new activity and sends the selected Song object through
                 Intent intent = new Intent(view.getContext(), MusicPlayer.class);
-                intent.putExtra("songNm", songName);
-                intent.putExtra("songAr", songArtist);
-                intent.putExtra("songArt", songArt);
+                intent.putExtra("songObject", song); //This is passing a song object
                 startActivity(intent);
 
             }
@@ -85,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 /*
- * TODO: Create activity layout files
- * TODO: Create activity java files
+ *
+ *
  * TODO: Transfer code to relevant activities/layout files
  * TODO: Remove previous code and all classes/fragments
  */
