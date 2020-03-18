@@ -6,7 +6,6 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -108,14 +107,16 @@ public class MusicPlayer extends AppCompatActivity {
     //This method starts playing music when audio focus is gained
     public void musicPlayer() {
 
-        //This gets the selected song file
+        //This gets the selected song object
         Bundle bundle = getIntent().getExtras();
         song = bundle.getParcelable("songObject");
 
+        //This gets the result of the audio focus request and assigns it to a variable
         int result = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,
                 AudioManager.STREAM_MUSIC,
                 AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
 
+        //This tells the media player what to do if audio focus is granted
         if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
 
             mMediaPlayer = MediaPlayer.create(this, song.getSongFile());
@@ -129,7 +130,7 @@ public class MusicPlayer extends AppCompatActivity {
 
     //This method is for when the play button is clicked
     public void playMusic() {
-        playBtn.setVisibility(View.INVISIBLE);
+        playBtn.setVisibility(View.INVISIBLE);                      //"Swaps" the play and pause buttons by setting them to be VISIBLE/INVISIBLE
         pauseBtn.setVisibility(View.VISIBLE);
 
         mMediaPlayer.seekTo(currentPosition);                       //Seeks to the current position
@@ -138,7 +139,7 @@ public class MusicPlayer extends AppCompatActivity {
 
     //This method is for when the pause button is clicked
     public void pauseMusic() {
-        playBtn.setVisibility(View.VISIBLE);
+        playBtn.setVisibility(View.VISIBLE);                        //"Swaps" the play and pause buttons by setting them to be VISIBLE/INVISIBLE
         pauseBtn.setVisibility(View.INVISIBLE);
 
         mMediaPlayer.pause();                                       //Pauses the playback
@@ -166,6 +167,7 @@ public class MusicPlayer extends AppCompatActivity {
         artistNameTextView.setText(songInfo.getSongArtist());
     }
 
+    //This method is called to destroy any instances of the media player object
     private void releaseMediaPlayer() {
 
         if (mMediaPlayer != null) {

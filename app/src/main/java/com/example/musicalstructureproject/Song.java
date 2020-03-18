@@ -24,32 +24,27 @@ public class Song implements Parcelable {
         mSongArtist = songArtist;
     }
 
+    //Getter methods
     public String getSongName() {
-
         return mSongName;
     }
 
     public String getSongArtist() {
-
         return mSongArtist;
     }
 
     public Song(String songName, String songArtist, int songFile, int songArt) {
-
         mSongName = songName;
         mSongArtist = songArtist;
         mSongFile = songFile;
         mSongArt = songArt;
-
     }
 
     public int getSongFile() {
-
         return mSongFile;
     }
 
     public int getSongArt() {
-
         return mSongArt;
     }
 

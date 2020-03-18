@@ -20,8 +20,6 @@
 package com.example.musicalstructureproject;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,7 +30,6 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -79,9 +76,3 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
-/*
- *
- *
- * TODO: Transfer code to relevant activities/layout files
- * TODO: Remove previous code and all classes/fragments
- */

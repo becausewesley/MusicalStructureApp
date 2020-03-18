@@ -48,8 +48,7 @@
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
             android:layout_margin="16dp"
-            android:src="@drawable/baseline_play_arrow_white_24dp" />
-        <!--TODO: Add all img sized for this image to drawables-->
+            android:src="@drawable/baseline_play_arrow_black" />
 
     </LinearLayout>
 
