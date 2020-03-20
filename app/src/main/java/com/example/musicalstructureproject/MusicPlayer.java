@@ -1,12 +1,16 @@
 package com.example.musicalstructureproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -165,6 +169,30 @@ public class MusicPlayer extends AppCompatActivity {
         //Sets the artist name String to the TextView
         artistNameTextView = findViewById(R.id.player_artist_name);
         artistNameTextView.setText(songInfo.getSongArtist());
+    }
+
+    //This creates the menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    //This gets which item is selected from the menu
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        int id = item.getItemId();
+
+        if (id == R.id.playlist_menu_item){
+            goToPlaylist();
+        }
+        return true;
+    }
+
+    //Method which creates an intent and switches activities
+    public void goToPlaylist(){
+        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(intent);
     }
 
     //This method is called to destroy any instances of the media player object

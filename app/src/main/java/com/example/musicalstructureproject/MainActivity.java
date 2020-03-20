@@ -22,11 +22,15 @@ package com.example.musicalstructureproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -34,10 +38,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setTitle(R.string.playlist_activity);
 
         //This is the array of Song objects which contain all relevant info (See Song.class)
         final ArrayList<Song> songs = new ArrayList<Song>();
@@ -74,5 +81,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    //This creates the menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    //This gets which item is selected from the menu
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        int id = item.getItemId();
+
+        if (id == R.id.now_playing_menu_item){
+            goToNowPlaying();
+        }
+        return true;
+    }
+
+    //Method which creates an intent and switches activities
+    public void goToNowPlaying(){
+        Intent intent = new Intent(getApplicationContext(),MusicPlayer.class);
+        startActivity(intent);
     }
 }

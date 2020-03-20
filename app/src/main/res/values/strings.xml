@@ -2,4 +2,6 @@
     <string name="app_name">Musical Structure Project</string>
     <string name="playlist_activity">Playlist</string>
     <string name="now_playing_activity">Now Playing</string>
+    <string name="playlist_menu_item">Playlist</string>
+    <string name="now_playing_menu_item">Now Playing</string>
 </resources>
