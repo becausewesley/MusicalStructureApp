@@ -19,6 +19,8 @@ import android.widget.TextView;
 
 public class MusicPlayer extends AppCompatActivity {
 
+    boolean itemSelected;
+
     //These are the view declarations where the info will be displayed
     TextView songNameTextView;
     TextView artistNameTextView;
@@ -74,22 +76,33 @@ public class MusicPlayer extends AppCompatActivity {
 
         mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
 
+        itemSelected = getIntent().getExtras().getBoolean("itemSelected");
+        Log.v("MusicPlayer", "Item selected:" + itemSelected);
+
         //Immediately releases the media player when the activity is created, just in-case an instance already exists.
         releaseMediaPlayer();
 
+        if (itemSelected){
+            infoSetter();
+            musicPlayer();
+        } else {
+            defaultInfoSetter();
+            defaultMusicPlayer();
+        }
+
         //This uses the infoSetter method to display all the info from the selection
-        infoSetter();
+//        infoSetter();
 
         //This sets the play button to VISIBLE by default
-        playBtn = findViewById(R.id.play_button);
-        playBtn.setVisibility(View.VISIBLE);
-
-        //This sets the pause button to VISIBLE by default
-        pauseBtn = findViewById(R.id.pause_button);
-        pauseBtn.setVisibility(View.INVISIBLE);
+//        playBtn = findViewById(R.id.play_button);
+//        playBtn.setVisibility(View.VISIBLE);
+//
+//        //This sets the pause button to VISIBLE by default
+//        pauseBtn = findViewById(R.id.pause_button);
+//        pauseBtn.setVisibility(View.INVISIBLE);
 
         //Plays music
-        musicPlayer();
+//        musicPlayer();
 
         //Play button On Click Listener
         playBtn.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +128,9 @@ public class MusicPlayer extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         song = bundle.getParcelable("songObject");
 
+        playBtn = findViewById(R.id.play_button);
+        pauseBtn = findViewById(R.id.pause_button);
+
         //This gets the result of the audio focus request and assigns it to a variable
         int result = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,
                 AudioManager.STREAM_MUSIC,
@@ -127,6 +143,30 @@ public class MusicPlayer extends AppCompatActivity {
             playBtn.setVisibility(View.INVISIBLE);      //Sets the play button to be invisible when music is playing
             pauseBtn.setVisibility(View.VISIBLE);       //Sets the pause button to be visible when music is playing
             mMediaPlayer.start();
+
+            mMediaPlayer.setOnCompletionListener(mCompletionListener);
+        }
+    }
+
+    public void defaultMusicPlayer(){
+
+        Bundle bundle = getIntent().getExtras();
+        Song defaultSong = bundle.getParcelable("defaultSong");
+
+        playBtn = findViewById(R.id.play_button);
+        pauseBtn = findViewById(R.id.pause_button);
+
+        //This gets the result of the audio focus request and assigns it to a variable
+        int result = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,
+                AudioManager.STREAM_MUSIC,
+                AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+
+        //This tells the media player what to do if audio focus is granted
+        if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+
+            mMediaPlayer = MediaPlayer.create(this, defaultSong.getSongFile());
+            playBtn.setVisibility(View.VISIBLE);      //Sets the play button to be visible by default
+            pauseBtn.setVisibility(View.INVISIBLE);       //Sets the pause button to be invisible by default
 
             mMediaPlayer.setOnCompletionListener(mCompletionListener);
         }
@@ -169,6 +209,24 @@ public class MusicPlayer extends AppCompatActivity {
         //Sets the artist name String to the TextView
         artistNameTextView = findViewById(R.id.player_artist_name);
         artistNameTextView.setText(songInfo.getSongArtist());
+    }
+
+    public void defaultInfoSetter(){
+        Bundle bundle = getIntent().getExtras();
+        Song defaultSong = bundle.getParcelable("defaultSong");
+
+        //Sets the Image Res ID to the ImageView
+        albumArt = findViewById(R.id.album_art_img_view);
+        albumArt.setImageResource(defaultSong.getSongArt());
+
+        //Sets the song name String to the TextView
+        songNameTextView = findViewById(R.id.player_song_name);
+        songNameTextView.setText(defaultSong.getSongName());
+
+        //Sets the artist name String to the TextView
+        artistNameTextView = findViewById(R.id.player_artist_name);
+        artistNameTextView.setText(defaultSong.getSongArtist());
+
     }
 
     //This creates the menu

@@ -38,6 +38,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    boolean itemSelected;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setTitle(R.string.playlist_activity);
+
+        itemSelected = false;
+        Log.v("MainActivity", "Item Selected: "+ itemSelected);
 
         //This is the array of Song objects which contain all relevant info (See Song.class)
         final ArrayList<Song> songs = new ArrayList<Song>();
@@ -73,9 +78,12 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Song song = songs.get(position); //This gets which item was selected
 
+                itemSelected = true;
+
                 //This creates the intent for the new activity and sends the selected Song object through
                 Intent intent = new Intent(view.getContext(), MusicPlayer.class);
                 intent.putExtra("songObject", song); //This is passing a song object
+                intent.putExtra("itemSelected", itemSelected);
                 startActivity(intent);
 
             }
@@ -103,7 +111,11 @@ public class MainActivity extends AppCompatActivity {
 
     //Method which creates an intent and switches activities
     public void goToNowPlaying(){
+        Song defaultSong = new Song("Fairyland", "AlienXXX", R.raw.alienxxx__fairyland, R.drawable.art1);
+
         Intent intent = new Intent(getApplicationContext(),MusicPlayer.class);
+        intent.putExtra("itemSelected", itemSelected);
+        intent.putExtra("defaultSong",defaultSong);
         startActivity(intent);
     }
 }
